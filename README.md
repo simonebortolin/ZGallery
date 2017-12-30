@@ -1,6 +1,6 @@
 # ZGallery
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ZGallery-brightgreen.svg?style=plastic)]()
-[![](https://jitpack.io/v/mzelzoghbi/ZGallery.svg)](https://jitpack.io/#mzelzoghbi/ZGallery)
+[![](https://jitpack.io/v/simonebortolin/ZGallery.svg)](https://jitpack.io/#simonebortolin/ZGallery)
 
 Android 3rd party library to make implementing galleries more easier
 
@@ -64,7 +64,7 @@ Add this to your module `build.gradle` file:
 ```java
 dependencies {
   ...
-    compile 'com.github.mzelzoghbi:zgallery:0.3'
+    compile 'com.github.simonebortolin:zgallery:sb0.3.2'
 }
 ```
 
