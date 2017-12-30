@@ -88,6 +88,8 @@ public class ZGallery {
         return this;
     }
 
+
+
     /**
      * Start the gallery activity with builder settings
      */
@@ -99,6 +101,7 @@ public class ZGallery {
         gridActivity.putExtra(Constants.IntentPassingParams.TOOLBAR_TITLE_COLOR, color);
         gridActivity.putExtra(Constants.IntentPassingParams.SELECTED_IMG_POS, selectedImgPosition);
         gridActivity.putExtra(Constants.IntentPassingParams.BG_COLOR, backgroundColor);
+
         mActivity.startActivity(gridActivity);
     }
 }

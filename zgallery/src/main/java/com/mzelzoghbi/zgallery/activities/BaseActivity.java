@@ -23,6 +23,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected int toolbarColorResId;
     private String title;
 
+    private boolean resumed = false;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,25 @@ public abstract class BaseActivity extends AppCompatActivity {
         afterInflation();
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    protected void onRestart() {
+        resumed = true;
+        super.onRestart();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+        overridePendingTransition(R.anim.empty, R.anim.empty);
+
+    }
 
     protected abstract int getResourceLayoutId();
 

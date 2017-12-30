@@ -5,10 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.mzelzoghbi.zgallery.ZGallery;
 import com.mzelzoghbi.zgallery.ZGrid;
 import com.mzelzoghbi.zgallery.entities.ZColor;
@@ -18,7 +14,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
+
     }
 
     public void gridActivity(View v) {
@@ -61,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTitle("Zak Gallery")
                 .setToolbarTitleColor(ZColor.WHITE)
                 .setSpanCount(3)
+
                 .setGridImgPlaceHolder(R.color.colorPrimary)
                 .show();
     }

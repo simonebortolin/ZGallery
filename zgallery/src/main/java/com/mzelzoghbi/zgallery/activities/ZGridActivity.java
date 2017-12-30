@@ -14,10 +14,9 @@ import com.mzelzoghbi.zgallery.entities.ZColor;
 /**
  * Created by mohamedzakaria on 8/6/16.
  */
-public final class ZGridActivity extends BaseActivity implements GridClickListener {
+public class ZGridActivity extends BaseActivity implements GridClickListener {
     private RecyclerView mRecyclerView;
     private GridImagesAdapter adapter;
-
     private int imgPlaceHolderResId;
     private int spanCount = 2;
 
@@ -49,11 +48,18 @@ public final class ZGridActivity extends BaseActivity implements GridClickListen
 
     @Override
     public void onClick(int pos) {
-        ZGallery.with(this, imageURLs)
-                .setToolbarTitleColor(ZColor.WHITE)
-                .setToolbarColorResId(toolbarColorResId)
-                .setSelectedImgPosition(pos)
-                .setTitle(mToolbar.getTitle().toString())
-                .show();
+
+            try {
+                ZGallery.with(this, imageURLs)
+                        .setToolbarTitleColor(ZColor.WHITE)
+                        .setToolbarColorResId(toolbarColorResId)
+                        .setSelectedImgPosition(pos)
+                        .setTitle(mToolbar.getTitle().toString())
+                        .show();
+                overridePendingTransition(R.anim.empty, R.anim.empty);
+            } catch (Exception e) {
+
+            }
+
     }
 }

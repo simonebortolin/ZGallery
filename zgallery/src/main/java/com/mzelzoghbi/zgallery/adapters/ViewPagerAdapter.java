@@ -1,8 +1,10 @@
 package com.mzelzoghbi.zgallery.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +25,7 @@ import com.bumptech.glide.request.target.Target;
 import com.mzelzoghbi.zgallery.R;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -57,11 +60,31 @@ public class ViewPagerAdapter extends PagerAdapter {
         return view == ((RelativeLayout) object);
     }
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = mLayoutInflater.inflate(R.layout.z_pager_item, container, false);
 
-        final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
+
+        try {
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    Glide.get(ViewPagerAdapter.this.activity).clearDiskCache();
+
+                    return null;
+                }
+            }.execute().get();
+        } catch (InterruptedException e) {
+            //e.printStackTrace();
+        } catch (ExecutionException e) {
+            //e.printStackTrace();
+        }
+        Glide.get(ViewPagerAdapter.this.activity).clearMemory();
+
+
+
+        final ImageView imageView = itemView.findViewById(R.id.iv);
         Glide.with(activity).load(images.get(position)).listener(new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

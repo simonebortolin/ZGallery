@@ -43,3 +43,6 @@ dependencies {
     }
     compile("com.android.support:design:$rootProject.ext.supportLibVersion") { ext.optional = true }
 }
+repositories {
+    mavenCentral()
+}

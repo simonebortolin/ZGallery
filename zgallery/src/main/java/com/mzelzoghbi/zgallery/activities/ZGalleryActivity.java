@@ -30,6 +30,7 @@ public class ZGalleryActivity extends BaseActivity {
     private ZColor bgColor;
 
 
+
     @Override
     protected int getResourceLayoutId() {
         return R.layout.z_activity_gallery;
