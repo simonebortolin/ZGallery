@@ -3,4 +3,8 @@
     <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
+	<style name="ZGallery" parent="Theme.AppCompat">
+		<item name="windowActionBar">false</item>
+		<item name="windowNoTitle">true</item>
+	</style>
 </resources>
