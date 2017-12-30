@@ -64,7 +64,7 @@ Add this to your module `build.gradle` file:
 ```java
 dependencies {
   ...
-    compile 'com.github.simonebortolin:zgallery:sb0.1'
+    compile 'com.github.simonebortolin:zgallery:sb0.3.2'
 }
 ```
 
