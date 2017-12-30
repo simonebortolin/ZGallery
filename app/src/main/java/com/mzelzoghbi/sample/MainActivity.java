@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // init sdk
+        gridActivity(null);
+
+       /* // init sdk
         MobileAds.initialize(getApplicationContext(), getString(R.string.ad_mob_id));
         //  init banner
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         AdRequest interstitialAdRequest = new AdRequest.Builder()
                 .build();
 
-        mInterstitialAd.loadAd(interstitialAdRequest);
+        mInterstitialAd.loadAd(interstitialAdRequest);*/
     }
 
     @Override
