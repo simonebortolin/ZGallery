@@ -87,14 +87,19 @@ public class ViewPagerAdapter extends PagerAdapter {
 
         final ImageView imageView = itemView.findViewById(R.id.imageView);
         final ProgressBar progressBar = itemView.findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
         Glide.with(activity).load(images.get(position)).listener(new RequestListener<Drawable>() {
+
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                progressBar.setVisibility(View.GONE);
                 return false;
             }
 
             @Override
             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                progressBar.setVisibility(View.GONE);
+
                 mPhotoViewAttacher = new PhotoViewAttacher(imageView);
 
                 mPhotoViewAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
