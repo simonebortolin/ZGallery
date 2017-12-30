@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
@@ -84,7 +85,8 @@ public class ViewPagerAdapter extends PagerAdapter {
 
 
 
-        final ImageView imageView = itemView.findViewById(R.id.iv);
+        final ImageView imageView = itemView.findViewById(R.id.imageView);
+        final ProgressBar progressBar = itemView.findViewById(R.id.progress_bar);
         Glide.with(activity).load(images.get(position)).listener(new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
