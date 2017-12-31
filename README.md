@@ -11,14 +11,14 @@ It includes two activities :
 * For displaying images in a `ViewPager` with a nice scroll `HorizontalList` and nice zooming gestures **Thanks for [PhotoView Library](https://github.com/chrisbanes/PhotoView)** 
 
 ## Screenshots
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_1.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_1.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_2.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_2.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_3.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_3.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_4.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_4.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_5.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_5.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_6.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_6.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_7.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_7.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_8.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_8.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_1.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_1.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_2.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_2.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_3.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_3.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_4.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_4.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_5.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_5.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_6.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_6.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_7.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_7.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_8.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_8.png" alt="" width="200px"></a>
 
 
 
