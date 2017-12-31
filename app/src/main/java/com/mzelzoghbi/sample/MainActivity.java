@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .setToolbarColorResId(R.color.colorPrimary)
                 .setTitle("Zak Gallery")
                 .setToolbarTitleColor(ZColor.WHITE)
-                .setSpanCount(3)
+                .setSpanCount(4)
 
                 .setGridImgPlaceHolder(R.color.colorPrimary)
                 .show();

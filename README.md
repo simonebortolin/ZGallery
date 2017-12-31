@@ -1,14 +1,9 @@
 # ZGallery
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ZGallery-brightgreen.svg?style=plastic)]()
 [![](https://jitpack.io/v/simonebortolin/ZGallery.svg)](https://jitpack.io/#simonebortolin/ZGallery)
 
 Android 3rd party library to make implementing galleries more easier
 
-I found myself writing the same Gallery Feature in many apps with the same code, so i made this library to make developers life more easier and prevent wasting their time.
-
-You can checkout the sample app, or view the app directly on GooglePlayStore
-
-<a href='https://play.google.com/store/apps/details?id=com.mzelzoghbi.zgallery'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="300px"/></a>
+ZGallery is useful to avoid writing the same code to manage small or large image galleries
 
 
 It includes two activities : 
@@ -16,9 +11,14 @@ It includes two activities :
 * For displaying images in a `ViewPager` with a nice scroll `HorizontalList` and nice zooming gestures **Thanks for [PhotoView Library](https://github.com/chrisbanes/PhotoView)** 
 
 ## Screenshots
-<a href="https://youtu.be/eJ70DDmr2FE"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/ZGallery_lib_sample_preview.gif" alt="" width="200px"></a>
-<a href="https://github.com/mzelzoghbi/ZGallery/blob/master/screenshot_grid.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/screenshot_grid.png" alt="" width="200px"></a>
-<a href="https://github.com/mzelzoghbi/ZGallery/blob/master/screenshot_gallery.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/screenshot_gallery.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_1.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_1.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_2.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_2.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_3.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_3.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_4.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_4.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_5.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_5.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_6.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_6.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_7.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_7.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_8.png"><img src="https://github.com/mzelzoghbi/ZGallery/blob/master/image_8.png" alt="" width="200px"></a>
 
 
 
@@ -68,7 +68,13 @@ dependencies {
 }
 ```
 
-# License
+## Credits
+
+
+I thank all the authors of the various commits that I have included in my fork
+
+
+## License
 
 > Copyright 2016 mzelzoghbi
 
