@@ -1,5 +1,6 @@
 package com.mzelzoghbi.zgallery.activities;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -21,6 +22,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected ArrayList<String> imageURLs;
     protected ZColor toolbarTitleColor;
     protected int toolbarColorResId;
+    protected int statusbarColorResId;
+
     private String title;
 
     private boolean resumed = false;
@@ -31,13 +34,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getResourceLayoutId());
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
 
         // get values
         imageURLs = getIntent().getStringArrayListExtra(Constants.IntentPassingParams.IMAGES);
         toolbarColorResId = getIntent().getIntExtra(Constants.IntentPassingParams.TOOLBAR_COLOR_ID, -1);
+        statusbarColorResId = getIntent().getIntExtra(Constants.IntentPassingParams.STATUSBAR_COLOR_ID, -1);
+
         title = getIntent().getStringExtra(Constants.IntentPassingParams.TITLE);
         toolbarTitleColor = (ZColor) getIntent().getSerializableExtra(Constants.IntentPassingParams.TOOLBAR_TITLE_COLOR);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && statusbarColorResId != -1) {
+            getWindow().setStatusBarColor(getResources().getColor(statusbarColorResId));
+        }
 
         if (getSupportActionBar() == null) {
             setSupportActionBar(mToolbar);

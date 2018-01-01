@@ -17,10 +17,16 @@ public class ZGrid {
     private String title;
     private int spanCount = 2;
     private int toolbarColor = -1;
+    private int statusbarColor = -1;
     private int imgPlaceHolderResId = -1;
     private ZColor color;
 
     private ZGrid() {
+    }
+
+    private ZGrid(Activity activity, ArrayList<String> imagesURLs) {
+        this.imagesURLs = imagesURLs;
+        this.mActivity = activity;
     }
 
     /**
@@ -29,12 +35,6 @@ public class ZGrid {
      */
     public static ZGrid with(Activity activity, ArrayList<String> imagesURLs) {
         return new ZGrid(activity, imagesURLs);
-    }
-
-
-    private ZGrid(Activity activity, ArrayList<String> imagesURLs) {
-        this.imagesURLs = imagesURLs;
-        this.mActivity = activity;
     }
 
     /**
@@ -75,6 +75,11 @@ public class ZGrid {
         return this;
     }
 
+    public ZGrid setStatusbarColorResId(int colorResId) {
+        this.statusbarColor = colorResId;
+        return this;
+    }
+
     /**
      * Set placeholder image for images in the grid
      * @param imgPlaceHolderResId
@@ -104,6 +109,7 @@ public class ZGrid {
         gridActivity.putExtra(Constants.IntentPassingParams.COUNT, spanCount);
         gridActivity.putExtra(Constants.IntentPassingParams.TITLE, title);
         gridActivity.putExtra(Constants.IntentPassingParams.TOOLBAR_COLOR_ID, toolbarColor);
+        gridActivity.putExtra(Constants.IntentPassingParams.STATUSBAR_COLOR_ID, statusbarColor);
         gridActivity.putExtra(Constants.IntentPassingParams.IMG_PLACEHOLDER, imgPlaceHolderResId);
         gridActivity.putExtra(Constants.IntentPassingParams.TOOLBAR_TITLE_COLOR, color);
         mActivity.startActivity(gridActivity);

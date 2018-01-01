@@ -36,6 +36,7 @@ public class ZGridActivity extends BaseActivity implements GridClickListener {
         adapter = new GridImagesAdapter(this, imageURLs, imgPlaceHolderResId);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, spanCount));
         mRecyclerView.setAdapter(adapter);
+
     }
 
     @Override
@@ -53,6 +54,7 @@ public class ZGridActivity extends BaseActivity implements GridClickListener {
                 ZGallery.with(this, imageURLs)
                         .setToolbarTitleColor(ZColor.WHITE)
                         .setToolbarColorResId(toolbarColorResId)
+                        .setStatusbarColorResId(statusbarColorResId)
                         .setSelectedImgPosition(pos)
                         .setTitle(mToolbar.getTitle().toString())
                         .show();

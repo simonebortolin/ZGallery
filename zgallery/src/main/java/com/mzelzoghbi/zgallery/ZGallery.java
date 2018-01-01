@@ -17,6 +17,7 @@ public class ZGallery {
     private String title;
     private int spanCount = 2;
     private int toolbarColor = -1;
+    private int statusbarColor = -1;
     private int imgPlaceHolderResId = -1;
     private ZColor color;
     private int selectedImgPosition;
@@ -25,18 +26,17 @@ public class ZGallery {
     private ZGallery() {
     }
 
+    private ZGallery(Activity activity, ArrayList<String> imagesURLs) {
+        this.imagesURLs = imagesURLs;
+        this.mActivity = activity;
+    }
+
     /**
      * @param activity   Refrence from current activity
      * @param imagesURLs Image URLs to be displayed
      */
     public static ZGallery with(Activity activity, ArrayList<String> imagesURLs) {
         return new ZGallery(activity, imagesURLs);
-    }
-
-
-    private ZGallery(Activity activity, ArrayList<String> imagesURLs) {
-        this.imagesURLs = imagesURLs;
-        this.mActivity = activity;
     }
 
     /**
@@ -58,6 +58,11 @@ public class ZGallery {
      */
     public ZGallery setToolbarColorResId(int colorResId) {
         this.toolbarColor = colorResId;
+        return this;
+    }
+
+    public ZGallery setStatusbarColorResId(int colorResId) {
+        this.statusbarColor = colorResId;
         return this;
     }
 
@@ -98,6 +103,7 @@ public class ZGallery {
         gridActivity.putExtra(Constants.IntentPassingParams.IMAGES, imagesURLs);
         gridActivity.putExtra(Constants.IntentPassingParams.TITLE, title);
         gridActivity.putExtra(Constants.IntentPassingParams.TOOLBAR_COLOR_ID, toolbarColor);
+        gridActivity.putExtra(Constants.IntentPassingParams.STATUSBAR_COLOR_ID, statusbarColor);
         gridActivity.putExtra(Constants.IntentPassingParams.TOOLBAR_TITLE_COLOR, color);
         gridActivity.putExtra(Constants.IntentPassingParams.SELECTED_IMG_POS, selectedImgPosition);
         gridActivity.putExtra(Constants.IntentPassingParams.BG_COLOR, backgroundColor);

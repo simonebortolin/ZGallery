@@ -17,8 +17,6 @@ It includes two activities :
 <a href="https://github.com/simonebortolin/ZGallery/blob/master/image_4.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_4.png" alt="" width="200px"></a>
 <a href="https://github.com/simonebortolin/ZGallery/blob/master/image_5.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_5.png" alt="" width="200px"></a>
 <a href="https://github.com/simonebortolin/ZGallery/blob/master/image_6.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_6.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_7.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_7.png" alt="" width="200px"></a>
-<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_8.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_8.png" alt="" width="200px"></a>
 
 
 
@@ -29,6 +27,7 @@ Simply with a very nice builder you will find it done.
 ```java
 ZGrid.with(this, /*your string arraylist of image urls*/)
                 .setToolbarColorResId(R.color.colorPrimary) // toolbar color
+                .setStatusbarColorResId(R.color.colorPrimaryDark) // status color
                 .setTitle("Zak Gallery") // toolbar title
                 .setToolbarTitleColor(ZColor.WHITE) // toolbar title color
                 .setSpanCount(3) // colums count
@@ -36,16 +35,37 @@ ZGrid.with(this, /*your string arraylist of image urls*/)
                 .show();
 ```
 
+```kotlin
+ZGrid.with(this, /*your string arraylist of image urls*/)
+                .setToolbarColorResId(R.color.colorPrimary) // toolbar color
+                .setStatusbarColorResId(R.color.colorPrimaryDark) // status color
+                .setTitle("Zak Gallery") // toolbar title
+                .setToolbarTitleColor(ZColor.WHITE) // toolbar title color
+                .setSpanCount(3) // colums count
+                .setGridImgPlaceHolder(R.color.colorPrimary) // color placeholder for the grid image until it loads
+                .show()
+```
 
 ### Gallery Builder
 
 ```java
 ZGallery.with(this, /*your string arraylist of image urls*/)
                 .setToolbarTitleColor(ZColor.WHITE) // toolbar title color
+                .setStatusbarColorResId(R.color.colorPrimaryDark) // status color
                 .setGalleryBackgroundColor(ZColor.WHITE) // activity background color
                 .setToolbarColorResId(R.color.colorPrimary) // toolbar color
                 .setTitle("Zak Gallery") // toolbar title
                 .show();
+```
+
+```kotlin
+ZGallery.with(this, /*your string arraylist of image urls*/)
+                .setToolbarTitleColor(ZColor.WHITE) // toolbar title color
+                .setStatusbarColorResId(R.color.colorPrimaryDark) // status color
+                .setGalleryBackgroundColor(ZColor.WHITE) // activity background color
+                .setToolbarColorResId(R.color.colorPrimary) // toolbar color
+                .setTitle("Zak Gallery") // toolbar title
+                .show()
 ```
                 
 ## Installation
@@ -64,7 +84,7 @@ Add this to your module `build.gradle` file:
 ```java
 dependencies {
   ...
-    compile 'com.github.simonebortolin:zgallery:0.3.4'
+    compile 'com.github.simonebortolin:zgallery:0.4.0'
 }
 ```
 

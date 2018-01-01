@@ -22,24 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        gridActivity(null);
-
-       /* // init sdk
-        MobileAds.initialize(getApplicationContext(), getString(R.string.ad_mob_id));
-        //  init banner
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        mAdView.loadAd(adRequest);
-        // init interstital
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(getString(R.string.ad_mob_interstitial));
-
-        AdRequest interstitialAdRequest = new AdRequest.Builder()
-                .build();
-
-        mInterstitialAd.loadAd(interstitialAdRequest);*/
     }
 
     @Override
@@ -51,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
     public void gridActivity(View v) {
         ZGrid.with(this, getDummyImageList())
                 .setToolbarColorResId(R.color.colorPrimary)
+                .setStatusbarColorResId(R.color.colorPrimaryDark)
                 .setTitle("Zak Gallery")
                 .setToolbarTitleColor(ZColor.WHITE)
-                .setSpanCount(4)
+                .setSpanCount(3)
 
                 .setGridImgPlaceHolder(R.color.colorPrimary)
                 .show();
@@ -65,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 .setToolbarTitleColor(ZColor.WHITE)
                 .setGalleryBackgroundColor(ZColor.WHITE)
                 .setToolbarColorResId(R.color.colorPrimary)
+                .setStatusbarColorResId(R.color.colorPrimaryDark)
                 .setTitle("Zak Gallery")
                 .show();
     }
