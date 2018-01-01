@@ -17,6 +17,7 @@ It includes two activities :
 <a href="https://github.com/simonebortolin/ZGallery/blob/master/image_4.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_4.png" alt="" width="200px"></a>
 <a href="https://github.com/simonebortolin/ZGallery/blob/master/image_5.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_5.png" alt="" width="200px"></a>
 <a href="https://github.com/simonebortolin/ZGallery/blob/master/image_6.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_6.png" alt="" width="200px"></a>
+<a href="https://github.com/simonebortolin/ZGallery/blob/master/image_7.png"><img src="https://github.com/simonebortolin/ZGallery/blob/master/image_7.png" alt="" width="200px"></a>
 
 
 
