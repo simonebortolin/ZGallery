@@ -9,12 +9,18 @@
         android:layout_height="40dp"
         android:layout_centerInParent="true" />
 
+    <com.afollestad.easyvideoplayer.EasyVideoPlayer
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ImageView
         android:id="@+id/iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
         android:clipChildren="false"
-        android:clipToPadding="true"
-        android:paddingBottom="80dp" />
+        android:clipToPadding="true"/>
 </RelativeLayout>

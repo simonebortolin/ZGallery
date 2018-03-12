@@ -2,41 +2,41 @@ package com.mzelzoghbi.zgallery.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
-import com.mzelzoghbi.zgallery.R;
+import com.afollestad.easyvideoplayer.EasyVideoCallback;
+import com.afollestad.easyvideoplayer.EasyVideoPlayer;
+import com.mzelzoghbi.zgallery.fragments.ImageFragment;
+import com.mzelzoghbi.zgallery.fragments.VideoFragment;
 
+import java.net.URLConnection;
 import java.util.ArrayList;
 
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by mohamedzakaria on 8/11/16.
  */
-public class ViewPagerAdapter extends PagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     Activity activity;
     LayoutInflater mLayoutInflater;
     ArrayList<String> images;
-    PhotoViewAttacher mPhotoViewAttacher;
-    private boolean isShowing = true;
+    public boolean isShowing = true;
     private Toolbar toolbar;
     private RecyclerView imagesHorizontalList;
 
-    public ViewPagerAdapter(Activity activity, ArrayList<String> images, Toolbar toolbar, RecyclerView imagesHorizontalList) {
+    public ViewPagerAdapter(FragmentManager fm, Activity activity, ArrayList<String> images, Toolbar toolbar, RecyclerView imagesHorizontalList) {
+        super(fm);
         this.activity = activity;
         mLayoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.images = images;
@@ -50,56 +50,107 @@ public class ViewPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == ((RelativeLayout) object);
+    public Fragment getItem(final int position) {
+        if (!isVideoFile(images.get(position))) {
+            ImageFragment im = (ImageFragment) ImageFragment.newInstance(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (isShowing) {
+                        isShowing = false;
+                        toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
+                        imagesHorizontalList.animate().translationY(imagesHorizontalList.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
+                    } else {
+                        isShowing = true;
+                        toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
+                        imagesHorizontalList.setVisibility(View.VISIBLE);
+                        imagesHorizontalList.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
+                    }
+                }
+            });
+
+            Bundle bundl = new Bundle();
+            bundl.putString("URL", images.get(position));
+
+            im.setArguments(bundl);
+
+            return im;
+        } else {
+            VideoFragment im = (VideoFragment) VideoFragment.newInstance(new EasyVideoCallback() {
+                @Override
+                public void onStarted(EasyVideoPlayer player) {
+                    if (isShowing) {
+                        isShowing = false;
+                        toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
+                    }
+                }
+
+                @Override
+                public void onPaused(EasyVideoPlayer player) {
+                    if (!isShowing) {
+                        isShowing = true;
+                        toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
+                    }
+                }
+
+                @Override
+                public void onPreparing(EasyVideoPlayer player) {
+
+                }
+
+                @Override
+                public void onPrepared(EasyVideoPlayer player) {
+
+                }
+
+                @Override
+                public void onBuffering(int percent) {
+
+                }
+
+                @Override
+                public void onError(EasyVideoPlayer player, Exception e) {
+
+                }
+
+                @Override
+                public void onCompletion(EasyVideoPlayer player) {
+                    if (!isShowing) {
+                        isShowing = true;
+                        toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
+                    }
+                }
+
+                @Override
+                public void onRetry(EasyVideoPlayer player, Uri source) {
+
+                }
+
+                @Override
+                public void onSubmit(EasyVideoPlayer player, Uri source) {
+
+                }
+
+                @Override
+                public void onClickVideoFrame(EasyVideoPlayer player) {
+                }
+            });
+
+            Bundle bundl = new Bundle();
+            bundl.putString("URL", images.get(position));
+
+            im.setArguments(bundl);
+
+            return im;
+        }
     }
 
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View itemView = mLayoutInflater.inflate(R.layout.z_pager_item, container, false);
-
-        final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
-        Glide.with(activity).load(images.get(position)).listener(new RequestListener<String, GlideDrawable>() {
-            @Override
-            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                return false;
-            }
-
-            @Override
-            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                mPhotoViewAttacher = new PhotoViewAttacher(imageView);
-
-                mPhotoViewAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
-                    @Override
-                    public void onPhotoTap(View view, float x, float y) {
-                        if (isShowing) {
-                            isShowing = false;
-                            toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
-                            imagesHorizontalList.animate().translationY(imagesHorizontalList.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
-                        } else {
-                            isShowing = true;
-                            toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
-                            imagesHorizontalList.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
-                        }
-                    }
-
-                    @Override
-                    public void onOutsidePhotoTap() {
-
-                    }
-                });
-
-                return false;
-            }
-        }).into(imageView);
-
-        container.addView(itemView);
-
-        return itemView;
+    public static boolean isImageFile(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("image");
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((RelativeLayout) object);
+    public static boolean isVideoFile(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("video");
     }
 }

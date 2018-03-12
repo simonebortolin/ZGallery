@@ -31,6 +31,8 @@ dependencies {
         ext.optional = true
     }
     compile("com.github.bumptech.glide:glide:$rootProject.ext.glideVersion") { ext.optional = true }
+    compile 'com.github.afollestad:easy-video-player:972198b'
+
     compile("com.android.support:recyclerview-v7:$rootProject.ext.supportLibVersion") {
         ext.optional = true
     }

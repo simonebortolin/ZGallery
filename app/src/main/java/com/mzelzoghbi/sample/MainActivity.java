@@ -75,9 +75,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> getDummyImageList() {
         ArrayList<String> imagesList = new ArrayList<>();
+        imagesList.add("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
         imagesList.add("http://static0.passel.co/wp-content/uploads/2016/08/05110349/20160731-igor-trepeshchenok-barnimages-08-768x509.jpg");
         imagesList.add("http://static0.passel.co/wp-content/uploads/2016/08/05095154/tumblr_oawfisUmZo1u7ns0go1_500.jpg");
         imagesList.add("http://static0.passel.co/wp-content/uploads/2016/08/05095153/tumblr_obbkeo3lZW1ted1sho1_500.jpg");
+        imagesList.add("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
+        imagesList.add("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
         imagesList.add("http://static0.passel.co/wp-content/uploads/2016/08/05095153/tumblr_obaxpnJbKg1sfie3io1_500.jpg");
         imagesList.add("http://static0.passel.co/wp-content/uploads/2016/08/05095153/tumblr_obdehwWneK1slhhf0o1_500.jpg");
         imagesList.add("http://static0.passel.co/wp-content/uploads/2016/08/05095152/2016-08-01-roman-drits-barnimages-005-768x512.jpg");

@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.mzelzoghbi.zgallery.Constants;
@@ -52,7 +53,7 @@ public class ZGalleryActivity extends BaseActivity {
 
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         // pager adapter
-        adapter = new ViewPagerAdapter(this, imageURLs, mToolbar, imagesHorizontalList);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, imageURLs, mToolbar, imagesHorizontalList);
         mViewPager.setAdapter(adapter);
         // horizontal list adaapter
         hAdapter = new HorizontalListAdapters(this, imageURLs, new OnImgClick() {
@@ -74,6 +75,11 @@ public class ZGalleryActivity extends BaseActivity {
             public void onPageSelected(int position) {
                 imagesHorizontalList.smoothScrollToPosition(position);
                 hAdapter.setSelectedItem(position);
+                if(ViewPagerAdapter.isVideoFile(imageURLs.get(position))){
+                    imagesHorizontalList.setVisibility(View.GONE);
+                } else {
+                    imagesHorizontalList.setVisibility(adapter.isShowing ? View.VISIBLE : View.GONE);
+                }
             }
 
             @Override
@@ -84,6 +90,11 @@ public class ZGalleryActivity extends BaseActivity {
 
         hAdapter.setSelectedItem(currentPos);
         mViewPager.setCurrentItem(currentPos);
+        if(ViewPagerAdapter.isVideoFile(imageURLs.get(currentPos))){
+            imagesHorizontalList.setVisibility(View.GONE);
+        } else {
+            imagesHorizontalList.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
