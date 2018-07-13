@@ -88,6 +88,7 @@ dependencies {
     implementation 'com.github.simonebortolin:ZGallery:0.5'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    implementation 'com.github.chrisbanes:PhotoView:2.1.4'
 }
 ```
 
