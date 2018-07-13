@@ -23,12 +23,12 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.github.chrisbanes.photoview.OnPhotoTapListener;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.mzelzoghbi.zgallery.R;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by mohamedzakaria on 8/11/16.
@@ -102,9 +102,10 @@ public class ViewPagerAdapter extends PagerAdapter {
 
                 mPhotoViewAttacher = new PhotoViewAttacher(imageView);
 
-                mPhotoViewAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
+                mPhotoViewAttacher.setOnPhotoTapListener(new OnPhotoTapListener() {
                     @Override
-                    public void onPhotoTap(View view, float x, float y) {
+                    public void onPhotoTap(ImageView view, float x, float y) {
+
                         if (isShowing) {
                             isShowing = false;
                             toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
@@ -114,11 +115,6 @@ public class ViewPagerAdapter extends PagerAdapter {
                             toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
                             imagesHorizontalList.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
                         }
-                    }
-
-                    @Override
-                    public void onOutsidePhotoTap() {
-
                     }
                 });
 
