@@ -86,6 +86,8 @@ Add this to your module `build.gradle` file:
 dependencies {
   ...
     implementation 'com.github.simonebortolin:ZGallery:0.5'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
 }
 ```
 
