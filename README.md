@@ -85,7 +85,7 @@ Add this to your module `build.gradle` file:
 ```java
 dependencies {
   ...
-    implementation 'com.github.simonebortolin:ZGallery:0.4.0'
+    implementation 'com.github.simonebortolin:ZGallery:0.5'
 }
 ```
 
