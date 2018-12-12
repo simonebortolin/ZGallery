@@ -24,8 +24,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     api project(':zgallery')
-
-    compile "com.google.firebase:firebase-ads:$rootProject.ext.adsVersion"
-
 }
 
