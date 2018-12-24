@@ -39,9 +39,9 @@ public class ZGalleryActivity extends BaseActivity {
     @Override
     protected void afterInflation() {
         // init layouts
-        mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
-        mViewPager = (CustomViewPager) findViewById(R.id.pager);
-        imagesHorizontalList = (RecyclerView) findViewById(R.id.imagesHorizontalList);
+        mainLayout = findViewById(R.id.mainLayout);
+        mViewPager = findViewById(R.id.pager);
+        imagesHorizontalList = findViewById(R.id.imagesHorizontalList);
 
         // get intent data
         currentPos = getIntent().getIntExtra(Constants.IntentPassingParams.SELECTED_IMG_POS, 0);

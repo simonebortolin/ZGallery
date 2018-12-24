@@ -49,10 +49,6 @@ public class ZGrid {
     }
 
 
-
-
-
-
     /**
      * Set grid layout colums count (default: 2)
      *
@@ -82,6 +78,7 @@ public class ZGrid {
 
     /**
      * Set placeholder image for images in the grid
+     *
      * @param imgPlaceHolderResId
      * @return
      */
@@ -100,6 +97,7 @@ public class ZGrid {
         this.color = color;
         return this;
     }
+
     /**
      * Start the grid activity with builder settings
      */

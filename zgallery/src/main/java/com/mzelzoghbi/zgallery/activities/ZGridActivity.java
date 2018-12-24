@@ -27,7 +27,7 @@ public class ZGridActivity extends BaseActivity implements GridClickListener {
 
     @Override
     protected void afterInflation() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recyclerView);
 
         // get extra values
         imgPlaceHolderResId = getIntent().getIntExtra(Constants.IntentPassingParams.IMG_PLACEHOLDER, -1);
