@@ -1,7 +1,5 @@
 package com.mzelzoghbi.zgallery.activities;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
 import com.mzelzoghbi.zgallery.Constants;
@@ -10,6 +8,9 @@ import com.mzelzoghbi.zgallery.ZGallery;
 import com.mzelzoghbi.zgallery.adapters.GridImagesAdapter;
 import com.mzelzoghbi.zgallery.adapters.listeners.GridClickListener;
 import com.mzelzoghbi.zgallery.entities.ZColor;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by mohamedzakaria on 8/6/16.

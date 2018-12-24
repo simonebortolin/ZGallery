@@ -2,10 +2,6 @@ package com.mzelzoghbi.zgallery.activities;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.mzelzoghbi.zgallery.Constants;
@@ -13,6 +9,11 @@ import com.mzelzoghbi.zgallery.R;
 import com.mzelzoghbi.zgallery.entities.ZColor;
 
 import java.util.ArrayList;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 /**
  * Created by mohamedzakaria on 8/11/16.

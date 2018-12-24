@@ -3,7 +3,6 @@ package com.mzelzoghbi.zgallery.adapters;
 import android.app.Activity;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,8 @@ import com.mzelzoghbi.zgallery.OnImgClick;
 import com.mzelzoghbi.zgallery.R;
 
 import java.util.ArrayList;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by mohamedzakaria on 8/12/16.
