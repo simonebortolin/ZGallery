@@ -32,7 +32,7 @@ dependencies {
         ext.optional = true
     }
     implementation("com.github.bumptech.glide:glide:$rootProject.ext.glideVersion") { ext.optional = true }
-    implementation 'com.github.Phoenix986:easy-video-player-deprecated:972198b665'
+    implementation 'com.github.Phoenix986:easy-video-player:9e4adc459e'
 
     implementation('androidx.recyclerview:recyclerview:1.0.0') {
         ext.optional = true
