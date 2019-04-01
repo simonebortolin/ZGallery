@@ -37,7 +37,7 @@ dependencies {
     implementation('androidx.recyclerview:recyclerview:1.0.0') {
         ext.optional = true
     }
-    implementation("com.github.chrisbanes:PhotoView:$rootProject.ext.photoViewLibVersion") {
+    api("com.github.chrisbanes:PhotoView:$rootProject.ext.photoViewLibVersion") {
         ext.optional = false
     }
     implementation('androidx.recyclerview:recyclerview:1.0.0') {
