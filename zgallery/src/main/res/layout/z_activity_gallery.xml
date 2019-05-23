@@ -18,9 +18,38 @@
         android:id="@+id/imagesHorizontalList"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
         android:clipToPadding="false"
         android:paddingLeft="40dp"
-        android:paddingRight="40dp" />
+        android:paddingRight="40dp"
+        android:layout_alignParentBottom="true" />
+
+    <LinearLayout
+        android:id="@+id/connection_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#bdbdbd"
+        android:visibility="visible"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_above="@+id/imagesHorizontalList"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/connection_status_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:text="@string/connection_error_loading_media"
+            android:textColor="#000000"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/ic_refresh_black_24dp"
+            android:onClick="ReloadMediaGallery"
+            android:contentDescription="TODO" />
+    </LinearLayout>
 </RelativeLayout>

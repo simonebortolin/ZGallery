@@ -31,7 +31,6 @@ public class ZGrid {
         return new ZGrid(activity, imagesURLs);
     }
 
-
     private ZGrid(Activity activity, ArrayList<String> imagesURLs) {
         this.imagesURLs = imagesURLs;
         this.mActivity = activity;
@@ -90,6 +89,7 @@ public class ZGrid {
         this.color = color;
         return this;
     }
+
     /**
      * Start the grid activity with builder settings
      */

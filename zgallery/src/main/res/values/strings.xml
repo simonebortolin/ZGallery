@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ZGallery</string>
+    <string name="connection_error_loading_media">Some images may not have been uploaded. Check your internet connection.</string>
 </resources>

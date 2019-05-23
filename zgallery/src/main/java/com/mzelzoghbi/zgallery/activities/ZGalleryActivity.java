@@ -1,11 +1,20 @@
 package com.mzelzoghbi.zgallery.activities;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.mzelzoghbi.zgallery.Constants;
@@ -16,11 +25,18 @@ import com.mzelzoghbi.zgallery.adapters.HorizontalListAdapters;
 import com.mzelzoghbi.zgallery.adapters.ViewPagerAdapter;
 import com.mzelzoghbi.zgallery.entities.ZColor;
 
+import java.util.ArrayList;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 /**
  * Created by mohamedzakaria on 8/11/16.
  */
 public class ZGalleryActivity extends BaseActivity {
     private RelativeLayout mainLayout;
+
+    private LinearLayout connectionStatus;
 
     CustomViewPager mViewPager;
     ViewPagerAdapter adapter;
@@ -30,6 +46,81 @@ public class ZGalleryActivity extends BaseActivity {
     private int currentPos;
     private ZColor bgColor;
 
+    private boolean scrollGridLoading = false;
+    private Integer prevTotalElementsInGrid = 0;
+
+    private BroadcastReceiver refreshMediaGalleryReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.hasExtra("newImageURLs")) {
+                ArrayList<String> newImageUrls = intent.getStringArrayListExtra("newImageURLs");
+                imageURLs.clear();
+                imageURLs.addAll(newImageUrls);
+                adapter.notifyDataSetChanged();
+                connectionStatus.setVisibility(GONE);
+            } else if (intent.hasExtra("imageURLsToAdd")) {
+                ArrayList<String> newImageUrls = intent.getStringArrayListExtra("imageURLsToAdd");
+                imageURLs.addAll(newImageUrls);
+                adapter.notifyDataSetChanged();
+                connectionStatus.setVisibility(GONE);
+            }
+        }
+    };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        IntentFilter filter = new IntentFilter("me.vms.ZGALLERY_UPDATE");
+        registerReceiver(refreshMediaGalleryReceiver, filter);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        unregisterReceiver(refreshMediaGalleryReceiver);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        imagesHorizontalList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) { //dx is the amount of horizontal scroll
+
+                //Questo evento parte molto frequentemente quindi utilizzo le variabili loading e prevTotalElementsInGrid per assicurarmi di
+                //fare una nuova richiesta solo una volta e solo in un preciso momento
+                if (scrollGridLoading) {
+                    if (imageURLs.size() > prevTotalElementsInGrid) {
+                        scrollGridLoading = false;
+                        prevTotalElementsInGrid = imageURLs.size();
+                    }
+                }
+                //Quando mi trovo a metà dello scorrimento della lista inizio ad aggiornare i nuovi elementi
+                else if (!scrollGridLoading && (((LinearLayoutManager) imagesHorizontalList.getLayoutManager()).findFirstVisibleItemPosition() > imageURLs.size() / 2)) {
+                    scrollGridLoading = true;
+
+                    if(isOnline()) {
+                        //Carico altre immagini
+                        Intent intent = new Intent();
+                        intent.setAction("me.vms.MEDIA_UPDATE");
+                        intent.putExtra("onScroll", true);
+                        getApplicationContext().sendBroadcast(intent);
+                    } else {
+                        scrollGridLoading = false;
+                        connectionStatus.setVisibility(VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+    }
 
     @Override
     protected int getResourceLayoutId() {
@@ -52,10 +143,19 @@ public class ZGalleryActivity extends BaseActivity {
         }
 
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
+        connectionStatus = findViewById(R.id.connection_status);
+
+        if(!isOnline()) {
+            connectionStatus.setVisibility(VISIBLE);
+        } else {
+            connectionStatus.setVisibility(GONE);
+        }
+
         // pager adapter
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, imageURLs, mToolbar, imagesHorizontalList);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, imageURLs, mToolbar, imagesHorizontalList, connectionStatus);
         mViewPager.setAdapter(adapter);
-        // horizontal list adaapter
+        // horizontal list adapter
         hAdapter = new HorizontalListAdapters(this, imageURLs, new OnImgClick() {
             @Override
             public void onClick(int pos) {
@@ -103,5 +203,11 @@ public class ZGalleryActivity extends BaseActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void ReloadMediaGallery(View view) {
+        Intent intent = new Intent();
+        intent.setAction("me.vms.MEDIA_UPDATE");
+        getApplicationContext().sendBroadcast(intent);
     }
 }
