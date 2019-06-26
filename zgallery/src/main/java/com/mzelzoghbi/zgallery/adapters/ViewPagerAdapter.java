@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.LinearLayout;
 
 import com.afollestad.easyvideoplayer.EasyVideoCallback;
 import com.afollestad.easyvideoplayer.EasyVideoPlayer;
@@ -21,6 +22,8 @@ import com.mzelzoghbi.zgallery.fragments.VideoFragment;
 
 import java.net.URLConnection;
 import java.util.ArrayList;
+
+import static android.view.View.GONE;
 
 
 /**
@@ -34,14 +37,16 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public boolean isShowing = true;
     private Toolbar toolbar;
     private RecyclerView imagesHorizontalList;
+    private LinearLayout connectionStatus;
 
-    public ViewPagerAdapter(FragmentManager fm, Activity activity, ArrayList<String> images, Toolbar toolbar, RecyclerView imagesHorizontalList) {
+    public ViewPagerAdapter(FragmentManager fm, Activity activity, ArrayList<String> images, Toolbar toolbar, RecyclerView imagesHorizontalList, LinearLayout connectionStatus) {
         super(fm);
         this.activity = activity;
         mLayoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.images = images;
         this.toolbar = toolbar;
         this.imagesHorizontalList = imagesHorizontalList;
+        this.connectionStatus = connectionStatus;
     }
 
     @Override
@@ -59,6 +64,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                         isShowing = false;
                         toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
                         imagesHorizontalList.animate().translationY(imagesHorizontalList.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
+                        connectionStatus.setVisibility(GONE);
                     } else {
                         isShowing = true;
                         toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
@@ -68,10 +74,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 }
             });
 
-            Bundle bundl = new Bundle();
-            bundl.putString("URL", images.get(position));
+            Bundle bundle = new Bundle();
+            bundle.putString("URL", images.get(position));
 
-            im.setArguments(bundl);
+            im.setArguments(bundle);
 
             return im;
         } else {
@@ -81,6 +87,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                     if (isShowing) {
                         isShowing = false;
                         toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
+                        connectionStatus.setVisibility(GONE);
                     }
                 }
 
@@ -135,10 +142,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 }
             });
 
-            Bundle bundl = new Bundle();
-            bundl.putString("URL", images.get(position));
+            Bundle bundle = new Bundle();
+            bundle.putString("URL", images.get(position));
 
-            im.setArguments(bundl);
+            im.setArguments(bundle);
 
             return im;
         }

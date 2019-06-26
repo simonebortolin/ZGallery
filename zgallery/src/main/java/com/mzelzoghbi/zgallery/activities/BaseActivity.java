@@ -1,5 +1,8 @@
 package com.mzelzoghbi.zgallery.activities;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -65,4 +68,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getResourceLayoutId();
 
     protected abstract void afterInflation();
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        return isConnected;
+    }
 }
