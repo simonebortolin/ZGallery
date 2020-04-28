@@ -23,7 +23,6 @@ import com.mzelzoghbi.zgallery.OnImgClick;
 import com.mzelzoghbi.zgallery.R;
 import com.mzelzoghbi.zgallery.adapters.HorizontalListAdapters;
 import com.mzelzoghbi.zgallery.adapters.ViewPagerAdapter;
-import com.mzelzoghbi.zgallery.entities.ZColor;
 
 import java.util.ArrayList;
 
@@ -44,7 +43,7 @@ public class ZGalleryActivity extends BaseActivity {
     LinearLayoutManager mLayoutManager;
     HorizontalListAdapters hAdapter;
     private int currentPos;
-    private ZColor bgColor;
+    private int bgColor;
 
     private boolean scrollGridLoading = false;
     private Integer prevTotalElementsInGrid = 0;
@@ -136,11 +135,9 @@ public class ZGalleryActivity extends BaseActivity {
 
         // get intent data
         currentPos = getIntent().getIntExtra(Constants.IntentPassingParams.SELECTED_IMG_POS, 0);
-        bgColor = (ZColor) getIntent().getSerializableExtra(Constants.IntentPassingParams.BG_COLOR);
+        bgColor = getIntent().getIntExtra(Constants.IntentPassingParams.BG_COLOR, -1);
 
-        if (bgColor == ZColor.WHITE) {
-            mainLayout.setBackgroundColor(ContextCompat.getColor(this, android.R.color.white));
-        }
+        mainLayout.setBackgroundColor(bgColor);
 
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 

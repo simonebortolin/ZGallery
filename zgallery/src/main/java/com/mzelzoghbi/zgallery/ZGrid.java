@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.mzelzoghbi.zgallery.activities.ZGridActivity;
-import com.mzelzoghbi.zgallery.entities.ZColor;
 
 import java.util.ArrayList;
 
@@ -18,7 +17,7 @@ public class ZGrid {
     private int spanCount = 2;
     private int toolbarColor = -1;
     private int imgPlaceHolderResId = -1;
-    private ZColor color;
+    private int color;
 
     private ZGrid() {
     }
@@ -85,7 +84,7 @@ public class ZGrid {
      * @param color enum color may be black or white
      * @return
      */
-    public ZGrid setToolbarTitleColor(ZColor color) {
+    public ZGrid setToolbarTitleColor(int color) {
         this.color = color;
         return this;
     }

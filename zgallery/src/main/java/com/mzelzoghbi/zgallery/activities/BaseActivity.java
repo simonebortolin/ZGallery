@@ -1,6 +1,8 @@
 package com.mzelzoghbi.zgallery.activities;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,7 +14,6 @@ import android.view.View;
 
 import com.mzelzoghbi.zgallery.Constants;
 import com.mzelzoghbi.zgallery.R;
-import com.mzelzoghbi.zgallery.entities.ZColor;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 public abstract class BaseActivity extends AppCompatActivity {
     protected Toolbar mToolbar;
     protected ArrayList<String> imageURLs;
-    protected ZColor toolbarTitleColor;
+    protected int toolbarTitleColor;
     protected int toolbarColorResId;
     private String title;
 
@@ -37,18 +38,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         imageURLs = getIntent().getStringArrayListExtra(Constants.IntentPassingParams.IMAGES);
         toolbarColorResId = getIntent().getIntExtra(Constants.IntentPassingParams.TOOLBAR_COLOR_ID, -1);
         title = getIntent().getStringExtra(Constants.IntentPassingParams.TITLE);
-        toolbarTitleColor = (ZColor) getIntent().getSerializableExtra(Constants.IntentPassingParams.TOOLBAR_TITLE_COLOR);
+        toolbarTitleColor = getIntent().getIntExtra(Constants.IntentPassingParams.TOOLBAR_TITLE_COLOR, -1);
+//        toolbarUpI R.drawable.ic_arrow_back_black
 
         if (getSupportActionBar() == null) {
             setSupportActionBar(mToolbar);
             mToolbar.setVisibility(View.VISIBLE);
-            if (toolbarTitleColor == ZColor.BLACK) {
-                mToolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.black));
-                getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black);
-            } else {
-                mToolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.white));
-                getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white);
+
+            mToolbar.setTitleTextColor(toolbarTitleColor);
+            Drawable icon = ContextCompat.getDrawable(this, R.drawable.ic_arrow_back_black);
+            if (icon != null) {
+                icon.setTint(toolbarTitleColor);
             }
+            getSupportActionBar().setHomeAsUpIndicator(icon);
+
             mToolbar.setBackgroundColor(getResources().getColor(toolbarColorResId));
             if (title != null) {
                 getSupportActionBar().setTitle(title);

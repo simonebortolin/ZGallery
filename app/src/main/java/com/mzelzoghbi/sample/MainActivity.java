@@ -1,5 +1,6 @@
 package com.mzelzoghbi.sample;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,7 +8,6 @@ import android.view.View;
 
 import com.mzelzoghbi.zgallery.ZGallery;
 import com.mzelzoghbi.zgallery.ZGrid;
-import com.mzelzoghbi.zgallery.entities.ZColor;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         ZGrid.with(this, getDummyImageList())
                 .setToolbarColorResId(R.color.colorPrimary)
                 .setTitle("Zak Gallery")
-                .setToolbarTitleColor(ZColor.WHITE)
+                .setToolbarTitleColor(Color.WHITE)
                 .setSpanCount(3)
                 .setGridImgPlaceHolder(R.color.colorPrimary)
                 .show();
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void galleryActivity(View v) {
         ZGallery.with(this, getDummyImageList())
-                .setToolbarTitleColor(ZColor.WHITE)
-                .setGalleryBackgroundColor(ZColor.WHITE)
+                .setToolbarTitleColor(Color.WHITE)
+                .setGalleryBackgroundColor(Color.WHITE)
                 .setToolbarColorResId(R.color.colorPrimary)
                 .setTitle("Zak Gallery")
                 .show();

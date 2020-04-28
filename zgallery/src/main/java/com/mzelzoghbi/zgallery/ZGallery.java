@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.mzelzoghbi.zgallery.activities.ZGalleryActivity;
-import com.mzelzoghbi.zgallery.entities.ZColor;
 
 import java.util.ArrayList;
 
@@ -18,9 +17,9 @@ public class ZGallery {
     private int spanCount = 2;
     private int toolbarColor = -1;
     private int imgPlaceHolderResId = -1;
-    private ZColor color;
+    private int color;
     private int selectedImgPosition;
-    private ZColor backgroundColor;
+    private int backgroundColor;
 
     private ZGallery() {
     }
@@ -67,7 +66,7 @@ public class ZGallery {
      * @param color enum color may be black or white
      * @return
      */
-    public ZGallery setToolbarTitleColor(ZColor color) {
+    public ZGallery setToolbarTitleColor(int color) {
         this.color = color;
         return this;
     }
@@ -83,7 +82,7 @@ public class ZGallery {
         return this;
     }
 
-    public ZGallery setGalleryBackgroundColor(ZColor backgroundColor) {
+    public ZGallery setGalleryBackgroundColor(int backgroundColor) {
         this.backgroundColor = backgroundColor;
         return this;
     }

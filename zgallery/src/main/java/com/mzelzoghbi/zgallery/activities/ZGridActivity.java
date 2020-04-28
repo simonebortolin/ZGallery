@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +20,6 @@ import com.mzelzoghbi.zgallery.R;
 import com.mzelzoghbi.zgallery.ZGallery;
 import com.mzelzoghbi.zgallery.adapters.GridImagesAdapter;
 import com.mzelzoghbi.zgallery.adapters.listeners.GridClickListener;
-import com.mzelzoghbi.zgallery.entities.ZColor;
 
 import java.util.ArrayList;
 
@@ -141,7 +141,7 @@ public final class ZGridActivity extends BaseActivity implements GridClickListen
     public void onClick(int pos) {
 
         ZGallery.with(this, imageURLs)
-                .setToolbarTitleColor(ZColor.WHITE)
+                .setToolbarTitleColor(Color.WHITE)
                 .setToolbarColorResId(toolbarColorResId)
                 .setSelectedImgPosition(pos)
                 .setTitle(mToolbar.getTitle().toString())
