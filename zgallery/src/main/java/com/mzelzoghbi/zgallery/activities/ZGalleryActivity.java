@@ -152,7 +152,7 @@ public class ZGalleryActivity extends BaseActivity {
         }
 
         // pager adapter
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, imageURLs, mToolbar, imagesHorizontalList, connectionStatus);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, imageURLs, mToolbar, imagesHorizontalList, connectionStatus, showHorizontalList);
         mViewPager.setAdapter(adapter);
         // horizontal list adapter
         hAdapter = new HorizontalListAdapters(this, imageURLs, new OnImgClick() {

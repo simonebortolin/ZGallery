@@ -38,8 +38,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     private Toolbar toolbar;
     private RecyclerView imagesHorizontalList;
     private LinearLayout connectionStatus;
+    private boolean showHorizontalList;
 
-    public ViewPagerAdapter(FragmentManager fm, Activity activity, ArrayList<String> images, Toolbar toolbar, RecyclerView imagesHorizontalList, LinearLayout connectionStatus) {
+    public ViewPagerAdapter(FragmentManager fm, Activity activity, ArrayList<String> images, Toolbar toolbar, RecyclerView imagesHorizontalList, LinearLayout connectionStatus, boolean showHorizontalList) {
         super(fm);
         this.activity = activity;
         mLayoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -47,6 +48,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         this.toolbar = toolbar;
         this.imagesHorizontalList = imagesHorizontalList;
         this.connectionStatus = connectionStatus;
+        this.showHorizontalList = showHorizontalList;
     }
 
     @Override
@@ -68,7 +70,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                     } else {
                         isShowing = true;
                         toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
-                        imagesHorizontalList.setVisibility(View.VISIBLE);
+                        imagesHorizontalList.setVisibility(showHorizontalList ? View.VISIBLE : GONE);
                         imagesHorizontalList.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
                     }
                 }
