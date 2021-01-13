@@ -20,6 +20,7 @@ public class ZGallery {
     private int color;
     private int selectedImgPosition;
     private int backgroundColor;
+    private boolean showHorizontalList = true;
 
     private ZGallery() {
     }
@@ -87,6 +88,11 @@ public class ZGallery {
         return this;
     }
 
+    public ZGallery hideHorizontalList() {
+        this.showHorizontalList = false;
+        return this;
+    }
+
     /**
      * Start the gallery activity with builder settings
      */
@@ -98,6 +104,7 @@ public class ZGallery {
         gridActivity.putExtra(Constants.IntentPassingParams.TOOLBAR_TITLE_COLOR, color);
         gridActivity.putExtra(Constants.IntentPassingParams.SELECTED_IMG_POS, selectedImgPosition);
         gridActivity.putExtra(Constants.IntentPassingParams.BG_COLOR, backgroundColor);
+        gridActivity.putExtra(Constants.IntentPassingParams.SHOW_HORIZONTAL_LIST, showHorizontalList);
         mActivity.startActivity(gridActivity);
     }
 }

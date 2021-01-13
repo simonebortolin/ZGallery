@@ -44,6 +44,7 @@ public class ZGalleryActivity extends BaseActivity {
     HorizontalListAdapters hAdapter;
     private int currentPos;
     private int bgColor;
+    private boolean showHorizontalList;
 
     private boolean scrollGridLoading = false;
     private Integer prevTotalElementsInGrid = 0;
@@ -136,6 +137,7 @@ public class ZGalleryActivity extends BaseActivity {
         // get intent data
         currentPos = getIntent().getIntExtra(Constants.IntentPassingParams.SELECTED_IMG_POS, 0);
         bgColor = getIntent().getIntExtra(Constants.IntentPassingParams.BG_COLOR, -1);
+        showHorizontalList = getIntent().getBooleanExtra(Constants.IntentPassingParams.SHOW_HORIZONTAL_LIST, true);
 
         mainLayout.setBackgroundColor(bgColor);
 
@@ -172,7 +174,7 @@ public class ZGalleryActivity extends BaseActivity {
             public void onPageSelected(int position) {
                 imagesHorizontalList.smoothScrollToPosition(position);
                 hAdapter.setSelectedItem(position);
-                if(ViewPagerAdapter.isVideoFile(imageURLs.get(position))){
+                if(ViewPagerAdapter.isVideoFile(imageURLs.get(position)) || !showHorizontalList){
                     imagesHorizontalList.setVisibility(View.GONE);
                 } else {
                     imagesHorizontalList.setVisibility(adapter.isShowing ? View.VISIBLE : View.GONE);
@@ -187,7 +189,7 @@ public class ZGalleryActivity extends BaseActivity {
 
         hAdapter.setSelectedItem(currentPos);
         mViewPager.setCurrentItem(currentPos);
-        if(ViewPagerAdapter.isVideoFile(imageURLs.get(currentPos))){
+        if(ViewPagerAdapter.isVideoFile(imageURLs.get(currentPos)) || !showHorizontalList){
             imagesHorizontalList.setVisibility(View.GONE);
         } else {
             imagesHorizontalList.setVisibility(View.VISIBLE);
